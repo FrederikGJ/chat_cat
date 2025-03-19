@@ -20,6 +20,20 @@ cat_responses = [
     "Purr... 😸"
 ]
 
+# Angry cat responses (in Danish)
+angry_cat_responses = [
+    "MIAU FOR HELVEDE! Hvad fanden er det for noget at sige 'ak' til mig! 😾",
+    "Hvad i alverden er det for noget lort! AK?! AK?! MIAU! 😾",
+    "For satan da også! Nu bliver jeg fandme sur! AK er et forbudt ord! 😾",
+    "MIAU! MIAU! MIAU! Hvad bilder du dig ind at sige AK til mig! 😾",
+    "For fanden da også! Nu skal jeg fandme vise dig hvem der er boss her! AK er ikke okay! 😾",
+    "MIAU! Du ved fandme godt at AK er et forbudt ord! 😾",
+    "For helvede da også! Nu bliver jeg fandme sur! AK?! 😾",
+    "MIAU! Hvad fanden er det for noget at sige AK til mig! 😾",
+    "For satan! Nu skal jeg fandme vise dig hvem der er boss her! AK er ikke okay! 😾",
+    "MIAU! MIAU! MIAU! AK er et forbudt ord, og du ved det! 😾"
+]
+
 # Set page config
 st.set_page_config(
     page_title="Chat with a Cat",
@@ -71,6 +85,7 @@ with st.sidebar:
     st.markdown("---")
     st.write("Welcome to Cat Chat! This is a simple chat application where you can talk to a cat.")
     st.write("The cat will respond with various cat sounds and expressions.")
+    st.write("⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾")
     st.markdown("---")
     st.write("Current time:", datetime.now().strftime("%H:%M:%S"))
     if st.button("Clear Chat", key="sidebar_clear"):
@@ -79,7 +94,7 @@ with st.sidebar:
 
 # Main content
 st.title("Chat with a Cat 😺")
-st.markdown("<div style='text-align: center; color: #666;'>Write something to the cat and it will respond with cat sounds!</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #666;'>Write something to the cat and it will respond with cat sounds!<br>⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾</div>", unsafe_allow_html=True)
 
 # Display chat messages
 for message in st.session_state.messages:
@@ -95,8 +110,11 @@ if prompt := st.chat_input("What would you like to say to the cat?"):
     with st.chat_message("user"):
         st.write(prompt)
     
-    # Generate cat response
-    cat_response = random.choice(cat_responses)
+    # Check if the message contains 'ak' or 'AK'
+    if "ak" in prompt.lower():
+        cat_response = random.choice(angry_cat_responses)
+    else:
+        cat_response = random.choice(cat_responses)
     
     # Add cat response to chat history
     st.session_state.messages.append({"role": "assistant", "content": cat_response})
