@@ -1,6 +1,7 @@
 import streamlit as st
 import random
 from datetime import datetime
+from special_responses import get_special_response
 
 # Initialize session state for chat history
 if "messages" not in st.session_state:
@@ -76,6 +77,32 @@ st.markdown("""
         font-size: 3em;
         margin-bottom: 0.5em;
     }
+    .special-response {
+        background-color: white;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .special-response img {
+        max-width: 200px;
+        margin-bottom: 15px;
+    }
+    .special-response a {
+        display: inline-block;
+        background-color: #FF6B6B;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+    }
+    .special-response a:hover {
+        background-color: #FF5252;
+        transform: scale(1.05);
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -86,6 +113,7 @@ with st.sidebar:
     st.write("Welcome to Cat Chat! This is a simple chat application where you can talk to a cat.")
     st.write("The cat will respond with various cat sounds and expressions.")
     st.write("⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾")
+    st.write("Try asking about 'fire assistant', 'dbi', or 'brandrådgiver' for special responses!")
     st.markdown("---")
     st.write("Current time:", datetime.now().strftime("%H:%M:%S"))
     if st.button("Clear Chat", key="sidebar_clear"):
@@ -94,7 +122,7 @@ with st.sidebar:
 
 # Main content
 st.title("Chat with a Cat 😺")
-st.markdown("<div style='text-align: center; color: #666;'>Write something to the cat and it will respond with cat sounds!<br>⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #666;'>Write something to the cat and it will respond with cat sounds!<br>⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾<br>Try asking about 'fire assistant', 'dbi', or 'brandrådgiver' for special responses!</div>", unsafe_allow_html=True)
 
 # Display chat messages
 for message in st.session_state.messages:
@@ -110,18 +138,38 @@ if prompt := st.chat_input("What would you like to say to the cat?"):
     with st.chat_message("user"):
         st.write(prompt)
     
-    # Check if the message contains 'ak' or 'AK'
-    if "ak" in prompt.lower():
-        cat_response = random.choice(angry_cat_responses)
+    # Check for special responses
+    special_response = get_special_response(prompt)
+    
+    if special_response:
+        # Add special response to chat history
+        st.session_state.messages.append({
+            "role": "assistant",
+            "content": f"Hey! I noticed you mentioned '{special_response['title']}'. Here's some information about it:"
+        })
+        
+        # Display special response card
+        st.markdown(f"""
+            <div class="special-response">
+                <img src="{special_response['image_url']}" alt="{special_response['title']}">
+                <h3>{special_response['title']}</h3>
+                <p>{special_response['description']}</p>
+                <a href="{special_response['link']}" target="_blank">Learn more</a>
+            </div>
+        """, unsafe_allow_html=True)
     else:
-        cat_response = random.choice(cat_responses)
-    
-    # Add cat response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": cat_response})
-    
-    # Display cat response
-    with st.chat_message("assistant"):
-        st.write(cat_response)
+        # Check if the message contains 'ak' or 'AK'
+        if "ak" in prompt.lower():
+            cat_response = random.choice(angry_cat_responses)
+        else:
+            cat_response = random.choice(cat_responses)
+        
+        # Add cat response to chat history
+        st.session_state.messages.append({"role": "assistant", "content": cat_response})
+        
+        # Display cat response
+        with st.chat_message("assistant"):
+            st.write(cat_response)
 
 # Footer
 st.markdown("---")
