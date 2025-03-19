@@ -140,4 +140,4 @@ If you find this project helpful, please give it a ⭐️ on GitHub!
 
 ---
 
-Made with 🐱 by [Your Name] 
+Made with 🐱 by [Yo Mama] 
