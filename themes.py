@@ -224,5 +224,136 @@ def get_theme_css(theme_name):
         .decoration {{
             background-color: {theme['background_color']} !important;
         }}
+        
+        /* TILFØJEDE STYLES - Mere omfattende styling af chat-input og andre elementer */
+        /* Chat input field */
+        div[data-testid="stChatInput"] {{
+            background-color: {theme['background_color']} !important;
+            border-color: {theme['primary_color']} !important;
+        }}
+        
+        /* Chat input container */
+        .st-emotion-cache-7ym5gk, 
+        .st-emotion-cache-1erivf3,
+        .st-emotion-cache-16j3fxc,
+        .st-emotion-cache-1on073z,
+        .st-emotion-cache-keje6w,
+        .st-emotion-cache-13grf9j {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Chat message avatar */
+        .stChatAvatar {{
+            background-color: {theme['primary_color']} !important;
+        }}
+        
+        /* Chat input and related elements */
+        textarea, 
+        input[type="text"], 
+        .stTextArea textarea, 
+        .stChatInput {{
+            background-color: white !important;
+            border: 2px solid {theme['primary_color']} !important;
+            border-radius: 20px !important;
+            color: {theme['text_color']} !important;
+        }}
+        
+        /* Chat input floating container */
+        .st-emotion-cache-1vbk2a8, 
+        .st-emotion-cache-z5fcl4 {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Additional Streamlit chat elements */
+        div[data-baseweb="input"] {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        div[data-baseweb="base-input"] {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        div[data-testid="stChatInput"] div,
+        div[data-testid="stChatMessageInput"] div {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        .st-emotion-cache-1r6slb0,
+        .st-emotion-cache-lrlib,
+        .st-emotion-cache-tyvr1z {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Chat container */
+        div[data-testid="stChatContainer"] {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Chat message input wrapper */
+        .st-emotion-cache-90vs21,
+        .st-emotion-cache-k7vsyb,
+        .st-emotion-cache-16txzdy {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Text input container */
+        div[data-baseweb="input-container"] {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Textarea and div wrappers */
+        textarea,
+        .st-emotion-cache-4oy321,
+        .st-emotion-cache-16vcbkt {{
+            background-color: white !important;
+            color: {theme['text_color']} !important;
+        }}
+        
+        /* Floating chat input and send button */
+        .st-emotion-cache-1kp110n,
+        .st-emotion-cache-14n19zb,
+        .st-emotion-cache-zq5wmm {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Send button in chat */
+        button[data-testid="stChatInputSubmitBtn"] {{
+            background-color: {theme['button_color']} !important;
+            color: white !important;
+            border-radius: 50% !important;
+        }}
+        
+        button[data-testid="stChatInputSubmitBtn"]:hover {{
+            background-color: {theme['button_hover_color']} !important;
+            transform: scale(1.05) !important;
+        }}
+
+        /* Streamlit version 1.30+ chat elements */
+        .st-emotion-cache-7wyd8z,
+        .st-emotion-cache-hvkcje,
+        .st-emotion-cache-dkjtxe,
+        .st-emotion-cache-90vs21,
+        .st-emotion-cache-ocqkz7 {{
+            background-color: {theme['background_color']} !important;
+        }}
+        
+        /* Streamlit input labels */
+        .st-emotion-cache-1qg05tj,
+        .st-emotion-cache-1fkbmr4 {{
+            color: {theme['text_color']} !important;
+        }}
+        
+        /* Additional input fields and containers */
+        .st-emotion-cache-19rxjzo,
+        .st-emotion-cache-16idsys {{
+            background-color: {theme['background_color']} !important;
+        }}
+
+        /* Message input containers and their parents */
+        .st-emotion-cache-ocqkz7 > div,
+        .st-emotion-cache-7ym5gk > div,
+        .st-emotion-cache-16txzdy > div {{
+            background-color: {theme['background_color']} !important;
+        }}
         </style>
-    """ 
+    """

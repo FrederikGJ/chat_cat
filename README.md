@@ -10,9 +10,7 @@ A playful and interactive Streamlit application where you can chat with a virtua
 - ⏰ Real-time clock display
 - 💬 Persistent chat history
 - 🧹 Easy chat clearing functionality
-- �� Responsive design
-- 🔥 Special responses for fire-related keywords
-- 😾 Angry responses for the forbidden word "ak"
+- 📱 Responsive design
 
 ## Preview 🖼️
 
@@ -31,8 +29,6 @@ A playful and interactive Streamlit application where you can chat with a virtua
 
 ## Installation 🛠️
 
-### For macOS/Linux Users:
-
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/chat_cat.git
@@ -42,26 +38,7 @@ cd chat_cat
 2. Create and activate a virtual environment:
 ```bash
 python -m venv env
-source env/bin/activate
-```
-
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-### For Windows Users:
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/chat_cat.git
-cd chat_cat
-```
-
-2. Create and activate a virtual environment:
-```bash
-python -m venv env
-.\env\Scripts\activate
+source env/bin/activate  # On Windows use: env\Scripts\activate
 ```
 
 3. Install dependencies:
@@ -80,17 +57,6 @@ streamlit run app.py
 
 3. Start chatting with the cat! 🐱
 
-## Special Features 🎯
-
-### Special Keywords:
-- Try mentioning "fire assistant" for information about Fire Assistant
-- Ask about "dbi" to learn about Det Danske Brandværn
-- Inquire about "brandrådgiver" for information about fire consulting
-
-### Easter Eggs:
-- Say "ak" or "AK" to see the cat get angry! 😾
-- The cat will respond with various cat sounds and expressions
-
 ## Customization 🎨
 
 The application uses a custom theme defined in `.streamlit/config.toml`. You can modify the colors and styling by editing this file.
@@ -100,21 +66,6 @@ The application uses a custom theme defined in `.streamlit/config.toml`. You can
 - Python 3.7+
 - Streamlit
 - See `requirements.txt` for full list of dependencies
-
-## Troubleshooting 🔧
-
-### Common Issues:
-
-1. **Virtual Environment Activation Issues**
-   - Windows: Make sure to use `.\env\Scripts\activate`
-   - macOS/Linux: Use `source env/bin/activate`
-
-2. **Port Already in Use**
-   - If port 8501 is already in use, Streamlit will automatically try the next available port
-   - Check the terminal output for the correct URL
-
-3. **Missing Dependencies**
-   - If you get import errors, make sure you've activated the virtual environment and installed all requirements
 
 ## Contributing 🤝
 
@@ -126,7 +77,7 @@ Contributions are welcome! Feel free to:
 
 ## License 📄
 
-This project is licensed under the GNU License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgments 🙏
 
@@ -140,4 +91,4 @@ If you find this project helpful, please give it a ⭐️ on GitHub!
 
 ---
 
-Made with 🐱 by [Yo Mama] 
+Made with 🐱 by [Your Name] 
