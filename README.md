@@ -91,4 +91,8 @@ If you find this project helpful, please give it a ⭐️ on GitHub!
 
 ---
 
+<<<<<<< HEAD
 Made with 🐱 by [Your Name] 
+=======
+Made with 🐱 by [Your Name] 
+>>>>>>> parent of 7e596b5 (Update README.md)
