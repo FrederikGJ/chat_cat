@@ -1,6 +1,6 @@
 # Chat with a Cat 😺
 
-A playful and interactive Streamlit application where you can chat with a virtual cat! The cat responds with various cat sounds and expressions, creating a fun and engaging experience.
+A playful and interactive Streamlit application where you can chat with a virtual cat! The cat responds with various cat sounds and expressions, creating a fun and engaging experience!
 
 ## Features 🌟
 
