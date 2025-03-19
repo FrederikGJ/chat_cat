@@ -2,10 +2,13 @@ import streamlit as st
 import random
 from datetime import datetime
 from special_responses import get_special_response
+from themes import get_theme_css, THEMES
 
-# Initialize session state for chat history
+# Initialize session state for chat history and theme
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "current_theme" not in st.session_state:
+    st.session_state.current_theme = "cat"
 
 # Cat responses
 cat_responses = [
@@ -43,72 +46,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS
-st.markdown("""
-    <style>
-    .stApp {
-        background-color: #FFF5F5;
-    }
-    .stButton>button {
-        background-color: #FF6B6B;
-        color: white;
-        border-radius: 20px;
-        padding: 10px 20px;
-        border: none;
-        transition: all 0.3s ease;
-    }
-    .stButton>button:hover {
-        background-color: #FF5252;
-        transform: scale(1.05);
-    }
-    .stChatMessage {
-        background-color: #FFE5E5;
-        border-radius: 15px;
-        padding: 15px;
-        margin: 10px 0;
-    }
-    .stTextInput>div>div>input {
-        border-radius: 20px;
-        border: 2px solid #FF6B6B;
-    }
-    h1 {
-        color: #FF6B6B;
-        text-align: center;
-        font-size: 3em;
-        margin-bottom: 0.5em;
-    }
-    .special-response {
-        background-color: white;
-        border-radius: 15px;
-        padding: 20px;
-        margin: 20px 0;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-    .special-response img {
-        max-width: 200px;
-        margin-bottom: 15px;
-    }
-    .special-response a {
-        display: inline-block;
-        background-color: #FF6B6B;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 20px;
-        text-decoration: none;
-        margin-top: 10px;
-        transition: all 0.3s ease;
-    }
-    .special-response a:hover {
-        background-color: #FF5252;
-        transform: scale(1.05);
-    }
-    </style>
-""", unsafe_allow_html=True)
+# Apply theme CSS
+st.markdown(get_theme_css(st.session_state.current_theme), unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:
-    st.title("🐱 Cat Chat Info")
+    st.title(f"{THEMES[st.session_state.current_theme]['icon']} Cat Chat Info")
     st.markdown("---")
     st.write("Welcome to Cat Chat! This is a simple chat application where you can talk to a cat.")
     st.write("The cat will respond with various cat sounds and expressions.")
@@ -116,13 +59,20 @@ with st.sidebar:
     st.write("Try asking about 'fire assistant', 'dbi', or 'brandrådgiver' for special responses!")
     st.markdown("---")
     st.write("Current time:", datetime.now().strftime("%H:%M:%S"))
+    
+    # Theme switcher
+    st.markdown("### Theme Settings")
+    if st.button(f"Switch to {THEMES['ocean' if st.session_state.current_theme == 'cat' else 'cat']['name']} {THEMES['ocean' if st.session_state.current_theme == 'cat' else 'cat']['icon']}"):
+        st.session_state.current_theme = 'ocean' if st.session_state.current_theme == 'cat' else 'cat'
+        st.rerun()
+    
     if st.button("Clear Chat", key="sidebar_clear"):
         st.session_state.messages = []
         st.rerun()
 
 # Main content
-st.title("Chat with a Cat 😺")
-st.markdown("<div style='text-align: center; color: #666;'>Write something to the cat and it will respond with cat sounds!<br>⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾<br>Try asking about 'fire assistant', 'dbi', or 'brandrådgiver' for special responses!</div>", unsafe_allow_html=True)
+st.title(f"Chat with a Cat {THEMES[st.session_state.current_theme]['icon']}")
+st.markdown(f"<div style='text-align: center; color: #666;'>Write something to the cat and it will respond with cat sounds!<br>⚠️ Warning: Don't say 'ak' or 'AK' unless you want to make the cat angry! 😾<br>Try asking about 'fire assistant', 'dbi', or 'brandrådgiver' for special responses!</div>", unsafe_allow_html=True)
 
 # Display chat messages
 for message in st.session_state.messages:
