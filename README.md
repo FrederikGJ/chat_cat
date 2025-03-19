@@ -126,7 +126,7 @@ Contributions are welcome! Feel free to:
 
 ## License 📄
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the GNU License - see the LICENSE file for details.
 
 ## Acknowledgments 🙏
 
