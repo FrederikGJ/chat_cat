@@ -1,6 +1,6 @@
 def get_special_response(message):
     """
-    Check if the message contains specific keywords and return appropriate response
+    Check if the message contains specific keywords and return appropriate response ..
     """
     message_lower = message.lower()
     

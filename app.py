@@ -9,7 +9,7 @@ if "messages" not in st.session_state:
 
 # Cat responses
 cat_responses = [
-    "Miaow! 😺",
+    "Miaow! !! 😺",
     "Purrr... 😸",
     "Hiss! 😾",
     "Meow meow! 😽",
